@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://43.152.213.229/privacy.html -->
+<html><script type="text/javascript">self['tp_XBGHkJcTIRV_func'] = function(frame){
+				if (frame === null) {
+					console.error("Frame is null");
+					return;
+				}
+
+				if (!frame['tp_XBGHkJcTIRV_done']) {
+					(function(frame, settings){
+			if (!frame.navigator) return;
+
+			function doUpdateProp(obj, prop, newVal){
+				let props = Object.getOwnPropertyDescriptor(obj, prop) || {configurable:true};
+
+				if (!props["configurable"]) {
+					//console.warn("Issue with property not being able to be configured.");
+					return;
+				}
+
+				props["value"] = newVal;
+				Object.defineProperty(obj, prop, props);
+
+				return props;
+			}
+
+			if (settings["deviceEnumeration"]["enabled"]){
+				doUpdateProp(frame.navigator, "webkitGetUserMedia", undefined);
+
+				if (frame.navigator.mediaDevices){
+					doUpdateProp(frame.navigator.mediaDevices, "enumerateDevices", undefined);
+				}
+
+				if (frame.MediaStreamTrack){
+					doUpdateProp(frame.MediaStreamTrack, "getSources", undefined);
+					doUpdateProp(frame.MediaStreamTrack, "getMediaDevices", undefined);
+				}
+			}
+
+			if (settings["wrtcPeerConnection"]["enabled"] === true && frame.RTCPeerConnection){
+				doUpdateProp(frame, "RTCPeerConnection", function(){
+					//window.top.postMessage("trace-protection::ran::webrtcpeerconnection::main", '*');
+					console.log("%c [Tr]->Protected[RTCPeerConnection] ","font-size:1em;line-height:2em;color:#1a1a1a;background-color:#ffffff;border:.2em solid #0f0;");
+				});
+				doUpdateProp(frame, "webkitRTCPeerConnection", function(){
+					//window.top.postMessage("trace-protection::ran::webrtcpeerconnection::main", '*');
+					console.log("%c [Tr]->Protected[RTCPeerConnection] ","font-size:1em;line-height:2em;color:#1a1a1a;background-color:#ffffff;border:.2em solid #0f0;");
+				});
+			}
+
+			if (settings["wrtcDataChannel"]["enabled"] === true && frame.RTCDataChannel){
+				doUpdateProp(frame, "RTCDataChannel", function(){
+					//window.top.postMessage("trace-protection::ran::webrtcdataconnection::main", '*');
+					console.log("%c [Tr]->Protected[RTCDataChannel] ","font-size:1em;line-height:2em;color:#1a1a1a;background-color:#ffffff;border:.2em solid #0f0;");
+				});
+			}
+
+			if (settings["wrtcRtpReceiver"]["enabled"] === true && frame.RTCRtpReceiver){
+				doUpdateProp(frame, "RTCRtpReceiver", function(){
+					//window.top.postMessage("trace-protection::ran::webrtcrtpreceiver::main", '*');
+					console.log("%c [Tr]->Protected[RTCRtpReceiver] ","font-size:1em;line-height:2em;color:#1a1a1a;background-color:#ffffff;border:.2em solid #0f0;");
+				});
+			}
+		})(frame,{"deviceEnumeration":{"enabled":true},"enabled":true,"wrtcDataChannel":{"enabled":false},"wrtcInternal":{"enabled":true},"wrtcPeerConnection":{"enabled":false},"wrtcRtpReceiver":{"enabled":false}});
+				} else {
+					frame['tp_XBGHkJcTIRV_done'] = true;
+					//console.log(frame);
+				}
+			};
+
+			//console.log(window);
+			//console.log(self);
+			self['tp_XBGHkJcTIRV_func'](window);
+			//self['tp_XBGHkJcTIRV_func'](self);
+
+			["HTMLIFrameElement","HTMLFrameElement"].forEach(function(el) {
+				var wind = self[el].prototype.__lookupGetter__('contentWindow'),
+					cont = self[el].prototype.__lookupGetter__('contentDocument');
+
+				Object.defineProperties(self[el].prototype,{
+					contentWindow:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return wind.apply(this);
+
+							let frame = wind.apply(this);
+							if (frame) self['tp_XBGHkJcTIRV_func'](frame);
+
+							return frame;
+						}
+					},
+					contentDocument:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return cont.apply(this);
+
+							let frame = cont.apply(this);
+							if (frame) self['tp_XBGHkJcTIRV_func'](frame);
+
+							return frame;
+						}
+					}
+				});
+			});</script><script type="text/javascript">self['tp_fvfbOvxgKws_func'] = function(frame){
+				if (frame === null) {
+					console.error("Frame is null");
+					return;
+				}
+
+				if (!frame['tp_fvfbOvxgKws_done']) {
+					(function(frame, settings) {
+			if (!settings["sendBeacon"]["enabled"]) return;
+			if (!frame.navigator || !frame.navigator.sendBeacon){
+				return;
+			}
+
+			function doUpdateProp(obj, prop, newVal){
+				let props = Object.getOwnPropertyDescriptor(obj, prop) || {configurable:true};
+
+				if (!props["configurable"]) {
+					//console.warn("Issue with property not being able to be configured.");
+					return;
+				}
+
+				props["value"] = newVal;
+				Object.defineProperty(obj, prop, props);
+
+				return props;
+			}
+
+			doUpdateProp(frame.navigator,"sendBeacon",function() {
+				//window.top.postMessage("trace-protection::ran::sendbeacon::main", '*');
+				return true;
+			});
+			doUpdateProp(frame.navigator.sendBeacon,"toString","function sendBeacon() { [native code] }");
+		})(frame,{"enabled":true,"pingRequest":{"enabled":true},"removePingAttr":{"enabled":false},"sendBeacon":{"enabled":true}});
+				} else {
+					frame['tp_fvfbOvxgKws_done'] = true;
+					//console.log(frame);
+				}
+			};
+
+			//console.log(window);
+			//console.log(self);
+			self['tp_fvfbOvxgKws_func'](window);
+			//self['tp_fvfbOvxgKws_func'](self);
+
+			["HTMLIFrameElement","HTMLFrameElement"].forEach(function(el) {
+				var wind = self[el].prototype.__lookupGetter__('contentWindow'),
+					cont = self[el].prototype.__lookupGetter__('contentDocument');
+
+				Object.defineProperties(self[el].prototype,{
+					contentWindow:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return wind.apply(this);
+
+							let frame = wind.apply(this);
+							if (frame) self['tp_fvfbOvxgKws_func'](frame);
+
+							return frame;
+						}
+					},
+					contentDocument:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return cont.apply(this);
+
+							let frame = cont.apply(this);
+							if (frame) self['tp_fvfbOvxgKws_func'](frame);
+
+							return frame;
+						}
+					}
+				});
+			});</script><script type="text/javascript">self['tp_ALuWOqZYdiD_func'] = function(frame){
+				if (frame === null) {
+					console.error("Frame is null");
+					return;
+				}
+
+				if (!frame['tp_ALuWOqZYdiD_done']) {
+					(function(frame, settings){
+			if (!frame.navigator){
+				return;
+			}
+
+			function doUpdateProp(obj, prop, newVal){
+				let props = Object.getOwnPropertyDescriptor(obj, prop) || {configurable:true};
+
+				if (!props["configurable"]) return;
+
+				props["value"] = newVal;
+				Object.defineProperty(obj, prop, props);
+
+				return props;
+			}
+
+			["hardwareConcurrency", "deviceMemory"].forEach(function(hw){
+				if (!settings["hardware"][hw]["enabled"]) return;
+
+				let newValue = settings["hardware"][hw]["value"] || 4;
+
+				doUpdateProp(frame.navigator, hw, newValue);
+			});
+
+			if (settings["hardware"]["hwVrDisplays"]["enabled"]) {
+				doUpdateProp(frame.navigator, "getVRDisplays", undefined);
+				doUpdateProp(frame.navigator, "activeVRDisplays", undefined);
+			}
+
+			if (settings["hardware"]["hwGamepads"]["enabled"]){
+				doUpdateProp(frame.navigator, "getGamepads", undefined);
+			}
+		})(frame,{"enabled":true,"hardware":{"deviceMemory":{"enabled":true,"value":4},"enabled":true,"hardwareConcurrency":{"enabled":true,"value":4},"hwGamepads":{"enabled":true},"hwVrDisplays":{"enabled":true}}});
+				} else {
+					frame['tp_ALuWOqZYdiD_done'] = true;
+					//console.log(frame);
+				}
+			};
+
+			//console.log(window);
+			//console.log(self);
+			self['tp_ALuWOqZYdiD_func'](window);
+			//self['tp_ALuWOqZYdiD_func'](self);
+
+			["HTMLIFrameElement","HTMLFrameElement"].forEach(function(el) {
+				var wind = self[el].prototype.__lookupGetter__('contentWindow'),
+					cont = self[el].prototype.__lookupGetter__('contentDocument');
+
+				Object.defineProperties(self[el].prototype,{
+					contentWindow:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return wind.apply(this);
+
+							let frame = wind.apply(this);
+							if (frame) self['tp_ALuWOqZYdiD_func'](frame);
+
+							return frame;
+						}
+					},
+					contentDocument:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return cont.apply(this);
+
+							let frame = cont.apply(this);
+							if (frame) self['tp_ALuWOqZYdiD_func'](frame);
+
+							return frame;
+						}
+					}
+				});
+			});</script><script type="text/javascript">self['tp_CdsKNYWrNll_func'] = function(frame){
+				if (frame === null) {
+					console.error("Frame is null");
+					return;
+				}
+
+				if (!frame['tp_CdsKNYWrNll_done']) {
+					(function(frame, settings){
+			function doUpdateProp(obj, prop, newVal){
+				let props = Object.getOwnPropertyDescriptor(obj, prop) || {configurable:true};
+
+				if (!props["configurable"]) {
+					//console.warn("Issue with property not being able to be configured.");
+					return;
+				}
+
+				props["value"] = newVal;
+				Object.defineProperty(obj, prop, props);
+
+				return props;
+			}
+
+			// Generate offset
+			let off = Math.floor(Math.random()*100)/100;
+
+			function updatedRect(old,round,overwrite){
+				function genOffset(round,val){
+					return val + (round ? Math.round(off) : off);
+				}
+
+				let temp = overwrite === true ? old : new DOMRect();
+
+				temp.top 	= genOffset(round,old.top);
+				temp.right	= genOffset(round,old.right);
+				temp.bottom = genOffset(round,old.bottom);
+				temp.left 	= genOffset(round,old.left);
+				temp.width 	= genOffset(round,old.width);
+				temp.height = genOffset(round,old.height);
+				temp.x 		= genOffset(round,old.x);
+				temp.y 		= genOffset(round,old.y);
+
+				return temp;
+			}
+
+			function getClientRectsProtection(el){
+				if (window.location.host === "docs.google.com") return;
+
+				let clientRects = frame[el].prototype.getClientRects;
+				doUpdateProp(frame[el].prototype,"getClientRects",function(){
+					let rects = clientRects.apply(this,arguments);
+					let krect = Object.keys(rects);
+
+					let DOMRectList = function(){};
+					let list = new DOMRectList();
+					list.length = krect.length;
+					for (let i = 0;i<list.length;i++){
+						if (krect[i] === "length") continue;
+						list[i] = updatedRect(rects[krect[i]],false,false);
+					}
+
+					//window.top.postMessage("trace-protection::ran::clientrects::" + el + "get", '*');
+					return list;
+				});
+				doUpdateProp(frame[el].prototype.getClientRects, "toString",function(){
+					//window.top.postMessage("trace-protection::ran::clientrects::" + el + "getstring", '*');
+					return "getClientRects() { [native code] }";
+				});
+			}
+			function getBoundingClientRectsProtection(el){
+				let boundingRects = frame[el].prototype.getBoundingClientRect;
+				doUpdateProp(frame[el].prototype,"getBoundingClientRect",function(){
+					let rect = boundingRects.apply(this,arguments);
+					if (this === undefined || this === null) return rect;
+
+					//window.top.postMessage("trace-protection::ran::clientrectsbounding::" + el + "get", '*');
+
+					return updatedRect(rect,true,true);
+				});
+				doUpdateProp(frame[el].prototype.getBoundingClientRect, "toString",function(){
+					//window.top.postMessage("trace-protection::ran::clientrectsbounding::" + el + "getstring", '*');
+					return "getBoundingClientRect() { [native code] }";
+				});
+			}
+
+			["Element","Range"].forEach(function(el){
+				// Check for broken frames
+				if (frame[el] === undefined) return;
+
+				// getClientRects
+				if (settings[el.toLowerCase()]["getclientrects"]["enabled"]) getClientRectsProtection(el);
+
+				// getBoundingClientRect
+				if (settings[el.toLowerCase()]["getboundingclientrects"]["enabled"]) getBoundingClientRectsProtection(el);
+			});
+		})(frame,{"element":{"getboundingclientrects":{"enabled":false},"getclientrects":{"enabled":true}},"enabled":true,"range":{"getboundingclientrects":{"enabled":true},"getclientrects":{"enabled":true}}});
+				} else {
+					frame['tp_CdsKNYWrNll_done'] = true;
+					//console.log(frame);
+				}
+			};
+
+			//console.log(window);
+			//console.log(self);
+			self['tp_CdsKNYWrNll_func'](window);
+			//self['tp_CdsKNYWrNll_func'](self);
+
+			["HTMLIFrameElement","HTMLFrameElement"].forEach(function(el) {
+				var wind = self[el].prototype.__lookupGetter__('contentWindow'),
+					cont = self[el].prototype.__lookupGetter__('contentDocument');
+
+				Object.defineProperties(self[el].prototype,{
+					contentWindow:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return wind.apply(this);
+
+							let frame = wind.apply(this);
+							if (frame) self['tp_CdsKNYWrNll_func'](frame);
+
+							return frame;
+						}
+					},
+					contentDocument:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return cont.apply(this);
+
+							let frame = cont.apply(this);
+							if (frame) self['tp_CdsKNYWrNll_func'](frame);
+
+							return frame;
+						}
+					}
+				});
+			});</script><script type="text/javascript">self['tp_DYIQuzKVgaB_func'] = function(frame){
+				if (frame === null) {
+					console.error("Frame is null");
+					return;
+				}
+
+				if (!frame['tp_DYIQuzKVgaB_done']) {
+					(function(frame, settings) {
+			if (!frame.HTMLCanvasElement){
+				//frame = window;
+				return;
+			}
+			//if (!frame.HTMLCanvasElement) return;
+
+			let rgba = [0,0,0,0];
+			if (settings["customRGBA"]["enabled"]){
+				rgba = settings["customRGBA"]["rgba"];
+			} else {
+				let rn = function(min,max){
+					return Math.floor(Math.random()*(max-min)+min);
+				};
+				rgba = [rn(0, 3), rn(0, 3), rn(0, 3), rn(0, 2)];
+			}
+
+
+			var injectIframes = function(el){
+				let injectionFrames = ["iframe", "frame"];
+				if (injectionFrames.indexOf(el.tagName.toLowerCase()) === -1 || !el.contentWindow) return;
+
+				if (el.contentWindow.HTMLCanvasElement) spoofExtract(el.contentWindow.HTMLCanvasElement);
+				if (el.contentWindow.CanvasRenderingContext2D) spoofRender(el.contentWindow.CanvasRenderingContext2D);
+				if (el.contentWindow.Document) watchDocFunctions(el.contentWindow.Document);
+			};
+
+			var watchDocFunctions = function(root){
+				function docFunctions(old,name) {
+					Object.defineProperty(root.prototype,name,{
+						value: function() {
+							let el = old.apply(this, arguments);
+							if (el === null) return null;
+
+							if (Object.prototype.toString.call(el) === '[object HTMLCollection]' ||
+								Object.prototype.toString.call(el) === '[object NodeList]') {
+								for (let i = 0; i < el.length; ++i) {
+									let elx = el[i];
+									injectIframes(elx);
+								}
+							} else {
+								injectIframes(el);
+							}
+							return el;
+						}
+					});
+				}
+
+				docFunctions(root.prototype.createElement,"createElement");
+				docFunctions(root.prototype.getElementById,"getElementById");
+				docFunctions(root.prototype.createElementNS,"createElementNS");
+				docFunctions(root.prototype.getElementsByName,"getElementsByName");
+				docFunctions(root.prototype.getElementsByTagName,"getElementsByTagName");
+				docFunctions(root.prototype.getElementsByClassName,"getElementsByClassName");
+				docFunctions(root.prototype.getElementsByTagNameNS,"getElementsByTagNameNS");
+			};
+
+			var spoofExtract = function(root){
+				function blockExtraction(name, old){
+					Object.defineProperty(root.prototype,name,{
+						value:function(){
+							if (this === null) return old.apply(this,arguments);
+
+							let width = this.width;
+							let height = this.height;
+							let context = this.getContext("2d");
+
+							if (context === null) return old.apply(this,arguments);
+
+							let iData = context.getImageData(0, 0, width, height);
+							for (let i = 0; i < height; i++) {
+								for (let j = 0; j < width; j++) {
+									let index = ((i * (width * 4)) + (j * 4));
+									iData.data[index] 		= iData.data[index] + rgba[0];
+									iData.data[index + 1] 	= iData.data[index + 1] + rgba[1];
+									iData.data[index + 2] 	= iData.data[index + 2] + rgba[2];
+									iData.data[index + 3] 	= iData.data[index + 3] + rgba[3];
+								}
+							}
+							context.putImageData(iData,0,0);
+							return old.apply(this,arguments);
+						}
+					});
+				}
+
+				blockExtraction("toDataURL", root.prototype.toDataURL);
+				blockExtraction("toBlob", root.prototype.toBlob);
+			};
+			var spoofRender = function(root){
+				let getImageData = root.prototype.getImageData;
+				Object.defineProperty(root.prototype,"getImageData",{
+					value:function(){
+						let iData = getImageData.apply(this, arguments);
+						let height = iData.height;
+						let width = iData.width;
+						for (let i = 0; i < height; i++) {
+							for (let j = 0; j < width; j++) {
+								let index = ((i * (width * 4)) + (j * 4));
+								iData.data[index] 		= iData.data[index] + rgba[0];
+								iData.data[index + 1] 	= iData.data[index + 1] + rgba[1];
+								iData.data[index + 2] 	= iData.data[index + 2] + rgba[2];
+								iData.data[index + 3] 	= iData.data[index + 3] + rgba[3];
+							}
+						}
+						return iData;
+					}
+				});
+			};
+
+			spoofExtract(frame.HTMLCanvasElement);
+			spoofRender(frame.CanvasRenderingContext2D);
+			watchDocFunctions(frame.Document);
+		})(frame,{"customRGBA":{"enabled":false,"rgba":[0,0,0,0]},"enabled":true});
+				} else {
+					frame['tp_DYIQuzKVgaB_done'] = true;
+					//console.log(frame);
+				}
+			};
+
+			//console.log(window);
+			//console.log(self);
+			self['tp_DYIQuzKVgaB_func'](window);
+			//self['tp_DYIQuzKVgaB_func'](self);
+
+			["HTMLIFrameElement","HTMLFrameElement"].forEach(function(el) {
+				var wind = self[el].prototype.__lookupGetter__('contentWindow'),
+					cont = self[el].prototype.__lookupGetter__('contentDocument');
+
+				Object.defineProperties(self[el].prototype,{
+					contentWindow:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return wind.apply(this);
+
+							let frame = wind.apply(this);
+							if (frame) self['tp_DYIQuzKVgaB_func'](frame);
+
+							return frame;
+						}
+					},
+					contentDocument:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return cont.apply(this);
+
+							let frame = cont.apply(this);
+							if (frame) self['tp_DYIQuzKVgaB_func'](frame);
+
+							return frame;
+						}
+					}
+				});
+			});</script><script type="text/javascript">self['tp_RSasExaXoOw_func'] = function(frame){
+				if (frame === null) {
+					console.error("Frame is null");
+					return;
+				}
+
+				if (!frame['tp_RSasExaXoOw_done']) {
+					(function(frame, settings) {
+			if (!frame.navigator){
+				return;
+			}
+
+			// Random 2 dp value
+			settings["level"] = Math.floor(Math.random()*100)/100;
+
+			function doUpdateProp(obj, prop, newVal){
+				let props = Object.getOwnPropertyDescriptor(obj, prop) || {configurable:true};
+
+				if (!props["configurable"]) {
+					//console.warn("Issue with property not being able to be configured.");
+					return;
+				}
+
+				props["value"] = newVal;
+				Object.defineProperty(obj, prop, props);
+
+				return props;
+			}
+
+			// To test: navigator.getBattery().then(a=>console.log(a));
+
+			let BatteryPromise = new Promise(function(resolve, reject){
+				let BatteryManager = function(){
+					this.charging = true;
+					this.chargingTime = Infinity;
+					this.dischargingTime = Infinity;
+					this.level = settings["level"];
+
+					this.onchargingchange = null;
+					this.onchargingtimechange = null;
+					this.ondischargingtimechange = null;
+					this.onlevelchange = null;
+
+					//window.top.postMessage("trace-protection::ran::battery::main", '*');
+				};
+
+				resolve(new BatteryManager())
+			});
+
+			doUpdateProp(frame.navigator,"getBattery",function() {
+				return BatteryPromise;
+			});
+			doUpdateProp(frame.navigator.getBattery,"toString","function getBattery() { [native code] }");
+		})(frame,{"enabled":true});
+				} else {
+					frame['tp_RSasExaXoOw_done'] = true;
+					//console.log(frame);
+				}
+			};
+
+			//console.log(window);
+			//console.log(self);
+			self['tp_RSasExaXoOw_func'](window);
+			//self['tp_RSasExaXoOw_func'](self);
+
+			["HTMLIFrameElement","HTMLFrameElement"].forEach(function(el) {
+				var wind = self[el].prototype.__lookupGetter__('contentWindow'),
+					cont = self[el].prototype.__lookupGetter__('contentDocument');
+
+				Object.defineProperties(self[el].prototype,{
+					contentWindow:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return wind.apply(this);
+
+							let frame = wind.apply(this);
+							if (frame) self['tp_RSasExaXoOw_func'](frame);
+
+							return frame;
+						}
+					},
+					contentDocument:{
+						get:function(){
+							if (this.src && this.src.indexOf('//') !== -1 && location.host !== this.src.split('/')[2]) return cont.apply(this);
+
+							let frame = cont.apply(this);
+							if (frame) self['tp_RSasExaXoOw_func'](frame);
+
+							return frame;
+						}
+					}
+				});
+			});</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <meta name="viewport" content="width=device-width">
+      <title>Privacy Policy</title>
+      <style> body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:1em; } </style>
+    </head>
+    <body>
+    <strong>Privacy Policy</strong> <p>
+                  [Developer/Company name] built the LittleMonsterVPN app as
+                  a Free app. This SERVICE is provided by
+                  [Developer/Company name] at no cost and is intended for use as
+                  is.
+                </p> <p>
+                  This page is used to inform visitors regarding [my/our]
+                  policies with the collection, use, and disclosure of Personal
+                  Information if anyone decided to use [my/our] Service.
+                </p> <p>
+                  If you choose to use [my/our] Service, then you agree to
+                  the collection and use of information in relation to this
+                  policy. The Personal Information that [I/We] collect is
+                  used for providing and improving the Service. [I/We] will not use or share your information with
+                  anyone except as described in this Privacy Policy.
+                </p> <p>
+                  The terms used in this Privacy Policy have the same meanings
+                  as in our Terms and Conditions, which are accessible at
+                  LittleMonsterVPN unless otherwise defined in this Privacy Policy.
+                </p> <p><strong>Information Collection and Use</strong></p> <p>
+                  For a better experience, while using our Service, [I/We]
+                  may require you to provide us with certain personally
+                  identifiable information. The information that
+                  [I/We] request will be [retained on your device and is not collected by [me/us] in any way]/[retained by us and used as described in this privacy policy].
+                </p> <div><p>
+                    The app does use third-party services that may collect
+                    information used to identify you.
+                  </p> <p>
+                    Link to the privacy policy of third-party service providers used
+                    by the app
+                  </p> <ul><!----><li><a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank" rel="noopener noreferrer">AdMob</a></li><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----></ul><div id="extwaiokist" style="display:none" v="efmeb" q="1efadb9a" c="95.59" i="205" u="14.73" s="10242217" d="1" w="false" e="" a="2" m="BMe=" vn="9axur"><div id="extwaigglbit" style="display:none" v="efmeb" q="1efadb9a" c="95.59" i="205" u="14.73" s="10242217" d="1" w="false" e="" a="2" m="BMe="></div></div></div> <p><strong>Log Data</strong></p> <p>
+                  [I/We] want to inform you that whenever you
+                  use [my/our] Service, in a case of an error in the app
+                  [I/We] collect data and information (through third-party
+                  products) on your phone called Log Data. This Log Data may
+                  include information such as your device Internet Protocol
+                  (“IP”) address, device name, operating system version, the
+                  configuration of the app when utilizing [my/our] Service,
+                  the time and date of your use of the Service, and other
+                  statistics.
+                </p> <p><strong>Cookies</strong></p> <p>
+                  Cookies are files with a small amount of data that are
+                  commonly used as anonymous unique identifiers. These are sent
+                  to your browser from the websites that you visit and are
+                  stored on your device's internal memory.
+                </p> <p>
+                  This Service does not use these “cookies” explicitly. However,
+                  the app may use third-party code and libraries that use
+                  “cookies” to collect information and improve their services.
+                  You have the option to either accept or refuse these cookies
+                  and know when a cookie is being sent to your device. If you
+                  choose to refuse our cookies, you may not be able to use some
+                  portions of this Service.
+                </p> <p><strong>Service Providers</strong></p> <p>
+                  [I/We] may employ third-party companies and
+                  individuals due to the following reasons:
+                </p> <ul><li>To facilitate our Service;</li> <li>To provide the Service on our behalf;</li> <li>To perform Service-related services; or</li> <li>To assist us in analyzing how our Service is used.</li></ul> <p>
+                  [I/We] want to inform users of this Service
+                  that these third parties have access to their Personal
+                  Information. The reason is to perform the tasks assigned to
+                  them on our behalf. However, they are obligated not to
+                  disclose or use the information for any other purpose.
+                </p> <p><strong>Security</strong></p> <p>
+                  [I/We] value your trust in providing us your
+                  Personal Information, thus we are striving to use commercially
+                  acceptable means of protecting it. But remember that no method
+                  of transmission over the internet, or method of electronic
+                  storage is 100% secure and reliable, and [I/We] cannot
+                  guarantee its absolute security.
+                </p> <p><strong>Links to Other Sites</strong></p> <p>
+                  This Service may contain links to other sites. If you click on
+                  a third-party link, you will be directed to that site. Note
+                  that these external sites are not operated by [me/us].
+                  Therefore, [I/We] strongly advise you to review the
+                  Privacy Policy of these websites. [I/We] have
+                  no control over and assume no responsibility for the content,
+                  privacy policies, or practices of any third-party sites or
+                  services.
+                </p> <p><strong>Children’s Privacy</strong></p> <div><p>
+                    These Services do not address anyone under the age of 13.
+                    [I/We] do not knowingly collect personally
+                    identifiable information from children under 13 years of age. In the case
+                    [I/We] discover that a child under 13 has provided
+                    [me/us] with personal information, [I/We] immediately
+                    delete this from our servers. If you are a parent or guardian
+                    and you are aware that your child has provided us with
+                    personal information, please contact [me/us] so that
+                    [I/We] will be able to do the necessary actions.
+                  </p></div> <!----> <p><strong>Changes to This Privacy Policy</strong></p> <p>
+                  [I/We] may update our Privacy Policy from
+                  time to time. Thus, you are advised to review this page
+                  periodically for any changes. [I/We] will
+                  notify you of any changes by posting the new Privacy Policy on
+                  this page.
+                </p> <p>This policy is effective as of 2022-09-04</p> <p><strong>Contact Us</strong></p> <p>
+                  If you have any questions or suggestions about [my/our]
+                  Privacy Policy, do not hesitate to contact [me/us] at littleMonsterVpn@gmail.com.
+                </p> <p>This privacy policy page was created at <a href="https://privacypolicytemplate.net/" target="_blank" rel="noopener noreferrer">privacypolicytemplate.net </a>and modified/generated by <a href="https://app-privacy-policy-generator.nisrulz.com/" target="_blank" rel="noopener noreferrer">App Privacy Policy Generator</a></p>
+    
+    
+      </body></html>
